@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pet_feeder/dialogues/add_feeding_dialogue.dart';
-import 'package:pet_feeder/widgets/feeding_widget.dart';
-
-import '../widgets/connection_widget.dart';
+import 'package:pet_feeder/service/app_service.dart';
+import 'package:pet_feeder/widgets/connection_widget_stream.dart';
+import 'package:pet_feeder/widgets/feeding_widget_stream.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,17 +12,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AppService appService = AppService.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    appService.initialize();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(15, 25, 15, 15),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        const CustomConnectionWidget(),
+        CustomStreamConnectionWidget(),
         Container(
           margin: const EdgeInsets.only(top: 20),
           padding: const EdgeInsets.all(10),
           color: Colors.grey[300],
-          child: FeedingWidget(showStartButton: true),
+          child: FeedingWidgetStream(showStartButton: true),
         ),
         Container(
           margin: const EdgeInsets.only(top: 5),

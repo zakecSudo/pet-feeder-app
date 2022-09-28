@@ -11,18 +11,28 @@ import 'package:rxdart/rxdart.dart';
 class Streamable<T> {
   final _behaviorSubject = BehaviorSubject<T>();
 
-  T _value;
+  T? _value;
+  Object? _error;
 
   /// Create [Streamable]
-  Streamable(this._value);
+  Streamable();
+
+  /// Create [Streamable] with initial value
+  Streamable.seeded(T value) {
+    this.value = value;
+  }
 
   /// Value stream
   ValueStream<T> get stream => _behaviorSubject.stream;
 
   /// Get latest value
-  T get value => _value;
+  T get value => _value as T;
+
+  /// Get latest value or null
+  T? get valueOrNull => _value;
 
   /// Get latest error
+  Object? get error => _error;
 
   /// Set new value and emit it (only if stream is open)
   set value(T value) => add(value);
@@ -30,9 +40,20 @@ class Streamable<T> {
   /// Set new value and emit it (only if stream is open)
   void add(T value) {
     _value = value;
+    _error = null;
 
     if (!_behaviorSubject.isClosed) {
       _behaviorSubject.add(value);
+    }
+  }
+
+  /// Set new error and emit it (only if stream is open)
+  void addError(Object error, StackTrace stackTrace) {
+    _value = null;
+    _error = error;
+
+    if (!_behaviorSubject.isClosed) {
+      _behaviorSubject.addError(error, stackTrace);
     }
   }
 

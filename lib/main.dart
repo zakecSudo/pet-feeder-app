@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_feeder/pages/control_page.dart';
+import 'package:pet_feeder/pages/control_page_stream.dart';
 import 'package:pet_feeder/pages/home_page.dart';
 
 void main() {
@@ -33,7 +33,7 @@ class _MainWidgetState extends State<MainWidget> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    ControlPage(),
+    ControlPageStream(),
   ];
 
   void _onItemTapped(int index) {
@@ -47,13 +47,12 @@ class _MainWidgetState extends State<MainWidget> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Pet feeder',
-            style: TextStyle(
-                color: Colors.black54, fontWeight: FontWeight.bold)),
+        title: const Text('Pet feeder', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.grey,
       ),
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        // selectedIconTheme: IconThemeData(color: Colors.amberAccent, size: 40),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

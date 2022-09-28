@@ -25,7 +25,7 @@ class _ControlPageState extends State<ControlPage> {
 
   Future<void> _refreshSchedules() async {
     _refreshIndicatorKey.currentState?.show();
-    _schedules = await _scheduleApi.getSchedules();
+    _schedules = await _scheduleApi.getAll();
   }
 
   @override
@@ -63,7 +63,7 @@ class _ControlPageState extends State<ControlPage> {
             onChanged: (bool value) {
               setState(() {
                 _schedules[index].active = value;
-                _scheduleApi.updateSchedule(_schedules[index]);
+                _scheduleApi.update(_schedules[index]);
               });
             },
             activeColor: Colors.lightGreen[400],

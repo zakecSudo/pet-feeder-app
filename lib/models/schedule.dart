@@ -8,7 +8,7 @@ class Schedule {
   bool active;
   LocalTime time;
   final List<Day> repeatDays;
-  Feeding feeding;
+  Feeding? feeding;
 
   Schedule(this.active, this.time, this.repeatDays, this.feeding, [this.id]);
 
