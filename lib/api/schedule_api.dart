@@ -31,7 +31,7 @@ class ScheduleApi {
       final body = json.decode(response.body);
       return Schedule.fromJson(body);
     }
-    throw Exception("Failed to save feeding. Status code: ${response.statusCode}");
+    throw Exception("Failed to create schedule. Status code: ${response.statusCode}");
   }
 
   Future<Schedule> update(Schedule schedule) async {
@@ -49,7 +49,7 @@ class ScheduleApi {
       final body = json.decode(response.body);
       return Schedule.fromJson(body);
     }
-    throw Exception("Failed to save feeding. Status code: ${response.statusCode}");
+    throw Exception("Failed to update schedule. Status code: ${response.statusCode}");
   }
 
   Future<void> delete(int? scheduleId) async {
@@ -57,7 +57,7 @@ class ScheduleApi {
       final response = await http.delete(Uri.parse(GlobalValues.baseUrl + "/schedules/$scheduleId"));
 
       if (response.statusCode != 200) {
-        throw Exception("Failed to delete feeding. Status code: ${response.statusCode}");
+        throw Exception("Failed to delete schedule. Status code: ${response.statusCode}");
       }
     }
   }

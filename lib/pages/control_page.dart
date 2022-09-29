@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_feeder/api/schedule_api.dart';
-import 'package:pet_feeder/dialogues/schedule_edit_dialogue.dart';
+import 'package:pet_feeder/dialogues/schedule_dialogue.dart';
 
 import '../models/schedule.dart';
 
@@ -55,8 +55,7 @@ class _ControlPageState extends State<ControlPage> {
                 ),
               ),
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => ScheduleEditDialogue(_schedules[index])));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleDialogue(_schedules[index])));
               },
             ),
             value: _schedules[index].active,

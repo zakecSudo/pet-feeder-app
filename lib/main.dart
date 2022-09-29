@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_feeder/pages/control_page_stream.dart';
+import 'package:pet_feeder/pages/feeding_control_page.dart';
 import 'package:pet_feeder/pages/home_page.dart';
 
 void main() {
@@ -29,9 +30,10 @@ class MainWidget extends StatefulWidget {
 }
 
 class _MainWidgetState extends State<MainWidget> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   static const List<Widget> _widgetOptions = <Widget>[
+    FeedingControlPage(),
     HomePage(),
     ControlPageStream(),
   ];
@@ -55,16 +57,22 @@ class _MainWidgetState extends State<MainWidget> {
         // selectedIconTheme: IconThemeData(color: Colors.amberAccent, size: 40),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            icon: Icon(Icons.dining),
+            label: 'Feedings',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alarm_rounded),
-            label: 'Control',
+            label: 'Schedules',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey[400],
+        selectedItemColor: Colors.black54,
+        selectedIconTheme: const IconThemeData(size: 32),
         onTap: _onItemTapped,
       ),
     );

@@ -29,7 +29,7 @@ class AppService {
 
     try {
       _feedings.add(null);
-      _feedings.add(await _feedingApi.getFeedings());
+      _feedings.add(await _feedingApi.getAll());
     } catch (e) {
       _feedings.addError(e, StackTrace.empty);
     }
@@ -50,7 +50,7 @@ class AppService {
     }
 
     try {
-      _feedings.add(await _feedingApi.getFeedings());
+      _feedings.add(await _feedingApi.getAll());
     } catch (e) {
       _feedings.addError(e, StackTrace.empty);
     }

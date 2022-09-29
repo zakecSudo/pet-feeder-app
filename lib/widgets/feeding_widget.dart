@@ -19,7 +19,7 @@ class _FeedingWidgetState extends State<FeedingWidget> {
   @override
   void initState() {
     super.initState();
-    _feedings = _feedingApi.getFeedings();
+    _feedings = _feedingApi.getAll();
   }
 
   @override
@@ -54,7 +54,7 @@ class _FeedingWidgetState extends State<FeedingWidget> {
                                     ),
                                   ),
                                 ),
-                                Text("${feeding.durationSeconds}s")
+                                Text("${feeding.durationSeconds.round()}s")
                               ],
                             ),
                             Text(feeding.description),

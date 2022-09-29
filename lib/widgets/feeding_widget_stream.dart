@@ -61,7 +61,7 @@ class _FeedingWidgetStreamState extends State<FeedingWidgetStream> {
                               ),
                             ),
                           ),
-                          Text("${feeding.durationSeconds}s")
+                          Text("${feeding.durationSeconds.round()}s")
                         ],
                       ),
                       Text(feeding.description),

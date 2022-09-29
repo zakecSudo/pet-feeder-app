@@ -1,14 +1,10 @@
 class Feeding {
   final int? id;
-  final String name;
-  final String description;
-  final double durationSeconds;
+  String name;
+  String description;
+  double durationSeconds;
 
-  Feeding(
-    this.name,
-    this.description,
-    this.durationSeconds, [this.id]
-  );
+  Feeding(this.name, this.description, this.durationSeconds, [this.id]);
 
   Feeding.fromJson(Map<String, dynamic> json)
       : id = json['id'],

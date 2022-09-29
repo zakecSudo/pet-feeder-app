@@ -4,7 +4,7 @@ import 'package:pet_feeder/models/schedule.dart';
 import 'package:pet_feeder/service/app_service.dart';
 import 'package:time_machine/time_machine.dart';
 
-import '../dialogues/schedule_edit_dialogue.dart';
+import '../dialogues/schedule_dialogue.dart';
 
 class ControlPageStream extends StatefulWidget {
   const ControlPageStream({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _ControlPageStreamState extends State<ControlPageStream> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ScheduleEditDialogue(
+                  builder: (context) => ScheduleDialogue(
                         Schedule(true, LocalTime.minValue, [], null),
                         create: true,
                       )));
@@ -77,7 +77,7 @@ class _ControlPageStreamState extends State<ControlPageStream> {
               ),
             ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleEditDialogue(schedules[index])));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleDialogue(schedules[index])));
             },
           ),
           value: schedules[index].active,

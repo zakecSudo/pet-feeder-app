@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_feeder/dialogues/add_feeding_dialogue.dart';
+import 'package:pet_feeder/dialogues/feeding_dialogue.dart';
 import 'package:pet_feeder/service/app_service.dart';
 import 'package:pet_feeder/widgets/connection_widget_stream.dart';
 import 'package:pet_feeder/widgets/feeding_widget_stream.dart';
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AddFeedingDialogue()),
+                MaterialPageRoute(builder: (context) => const FeedingDialogue()),
               )
             },
           ),
