@@ -18,6 +18,7 @@ class AppService {
   final _connection = Streamable<Connection?>();
   final _feedings = Streamable<List<Feeding>?>();
   final _schedules = Streamable<List<Schedule>?>();
+  final _upcomingSchedules = Streamable<List<Schedule>?>();
 
   Future<void> onInvalidate() async {
     try {
@@ -40,6 +41,13 @@ class AppService {
     } catch (e) {
       _schedules.addError(e, StackTrace.empty);
     }
+
+    try {
+      _upcomingSchedules.add(null);
+      _upcomingSchedules.add(await _scheduleApi.getUpcoming());
+    } catch (e) {
+      _upcomingSchedules.addError(e, StackTrace.empty);
+    }
   }
 
   Future<void> initialize() async {
@@ -60,9 +68,18 @@ class AppService {
     } catch (e) {
       _schedules.addError(e, StackTrace.empty);
     }
+
+    try {
+      _upcomingSchedules.add(await _scheduleApi.getUpcoming());
+    } catch (e) {
+      _upcomingSchedules.addError(e, StackTrace.empty);
+    }
   }
 
   ValueStream<Connection?> get connection => _connection.stream;
   ValueStream<List<Feeding>?> get feedings => _feedings.stream;
+
   ValueStream<List<Schedule>?> get schedules => _schedules.stream;
+
+  ValueStream<List<Schedule>?> get upcomingSchedules => _upcomingSchedules.stream;
 }

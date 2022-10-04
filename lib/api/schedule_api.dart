@@ -16,6 +16,13 @@ class ScheduleApi {
     return List<Schedule>.from(body.map((model) => Schedule.fromJson(model)));
   }
 
+  Future<List<Schedule>> getUpcoming() async {
+    final response = await http.get(Uri.parse(GlobalValues.baseUrl + "/schedules/upcoming"));
+    final body = json.decode(response.body);
+
+    return List<Schedule>.from(body.map((model) => Schedule.fromJson(model)));
+  }
+
   Future<Schedule> create(Schedule schedule) async {
     ScheduleStorable scheduleStorable =
         ScheduleStorable(schedule.active, schedule.time, schedule.repeatDays, schedule.feeding!.id!);

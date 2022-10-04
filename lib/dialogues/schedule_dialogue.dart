@@ -65,7 +65,7 @@ class _ScheduleDialogueState extends State<ScheduleDialogue> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
+              margin: const EdgeInsets.only(top: 10, bottom: 10),
               child: SizedBox(
                   height: 130,
                   child: CupertinoDatePicker(
