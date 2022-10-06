@@ -45,6 +45,7 @@ class _FeedingControlPageState extends State<FeedingControlPage> {
 
   Widget buildScheduleList(List<Feeding> feedings) {
     return ListView.builder(
+      padding: const EdgeInsets.only(bottom: 60),
       itemCount: feedings.length,
       itemBuilder: (context, index) {
         return ListTile(

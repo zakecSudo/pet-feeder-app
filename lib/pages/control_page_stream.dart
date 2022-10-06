@@ -54,6 +54,7 @@ class _ControlPageStreamState extends State<ControlPageStream> {
 
   Widget buildScheduleList(List<Schedule> schedules) {
     return ListView.builder(
+      padding: const EdgeInsets.only(bottom: 70),
       itemCount: schedules.length,
       itemBuilder: (context, index) {
         return SwitchListTile(

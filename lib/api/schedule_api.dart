@@ -13,7 +13,12 @@ class ScheduleApi {
     final response = await http.get(_scheduleUrl);
     final body = json.decode(response.body);
 
-    return List<Schedule>.from(body.map((model) => Schedule.fromJson(model)));
+    List<Schedule> schedules = List<Schedule>.from(body.map((model) => Schedule.fromJson(model)));
+    for (Schedule schedule in schedules) {
+      schedule.repeatDays.sort((a, b) => a.compareTo(b));
+    }
+
+    return schedules;
   }
 
   Future<List<Schedule>> getUpcoming() async {

@@ -1,20 +1,19 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import 'package:pet_feeder/values.dart';
 import 'package:pet_feeder/models/connection.dart';
+import 'package:pet_feeder/values.dart';
 
 class MqttApi {
   Future<Connection> checkConnectionAlive() async {
-    Uri connectionStatusUrl =
-        Uri.parse(GlobalValues.baseUrl + "/mqtt/connection-status");
+    Uri connectionStatusUrl = Uri.parse(GlobalValues.baseUrl + "/mqtt/connection-status");
     final response = await http.get(connectionStatusUrl);
 
     if (response.statusCode == 200) {
       final body = json.decode(response.body);
       return Connection.fromJson(body);
     } else {
-      throw Exception(
-          "Failed to load connection status. Status code: ${response.statusCode}");
+      throw Exception("Failed to load connection status. Status code: ${response.statusCode}");
     }
   }
 

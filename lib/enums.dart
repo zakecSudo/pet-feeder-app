@@ -16,5 +16,8 @@ enum Day {
   final String displayText;
 
   String toJson() => name;
+
   static Day fromJson(String json) => values.byName(json);
+
+  int compareTo(Day other) => index.compareTo(other.index);
 }
