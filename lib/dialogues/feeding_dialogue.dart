@@ -123,18 +123,16 @@ class _FeedingDialogueState extends State<FeedingDialogue> {
                 visible: widget.feeding != null,
                 child: Container(
                   margin: const EdgeInsets.only(top: 20),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(fontSize: 22),
-                    ),
+                  child: ElevatedButton(
                     onPressed: () async {
                       await feedingApi.delete(widget.feeding?.id);
                       appService.onInvalidate();
                       Navigator.pop(context);
                     },
-                    child: Text(
-                      'Delete',
-                      style: TextStyle(color: Colors.red[600]),
+                    child: const Text("DELETE"),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.red[600]),
+                      padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(10)),
                     ),
                   ),
                 ),
